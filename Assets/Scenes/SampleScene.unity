@@ -275,7 +275,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -657.33, y: 204.73}
+  m_AnchoredPosition: {x: 730, y: 0}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &96634753
@@ -332,8 +332,8 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -544,6 +544,72 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1916723043}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!1001 &290234764
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1663107251}
+    m_Modifications:
+    - target: {fileID: 3609162344549577466, guid: a331f042aa1bc044c9041e3b41c67637, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 3609162344549577466, guid: a331f042aa1bc044c9041e3b41c67637, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 3609162344549577466, guid: a331f042aa1bc044c9041e3b41c67637, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3609162344549577466, guid: a331f042aa1bc044c9041e3b41c67637, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3609162344549577466, guid: a331f042aa1bc044c9041e3b41c67637, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3609162344549577466, guid: a331f042aa1bc044c9041e3b41c67637, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3609162344549577466, guid: a331f042aa1bc044c9041e3b41c67637, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3609162344549577466, guid: a331f042aa1bc044c9041e3b41c67637, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3609162344549577466, guid: a331f042aa1bc044c9041e3b41c67637, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3609162344549577466, guid: a331f042aa1bc044c9041e3b41c67637, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6250590983141734979, guid: a331f042aa1bc044c9041e3b41c67637, type: 3}
+      propertyPath: m_Name
+      value: Mine (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6250590983141734979, guid: a331f042aa1bc044c9041e3b41c67637, type: 3}
+      propertyPath: m_TagString
+      value: Hazard
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a331f042aa1bc044c9041e3b41c67637, type: 3}
+--- !u!4 &290234765 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3609162344549577466, guid: a331f042aa1bc044c9041e3b41c67637, type: 3}
+  m_PrefabInstance: {fileID: 290234764}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &294637238
 GameObject:
   m_ObjectHideFlags: 0
@@ -3815,6 +3881,7 @@ Transform:
   - {fileID: 1663434118}
   - {fileID: 1598473836}
   - {fileID: 986819320}
+  - {fileID: 290234765}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1663434118 stripped
@@ -4566,7 +4633,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gravityScale: 3
-  tiltSpeed: 0.1
+  tiltSpeed: 5
   direction: {x: 0, y: 0}
   directionArrow: {fileID: 1683156044}
   rigidBody2D: {fileID: 1871363184}

@@ -13,43 +13,56 @@ public class BallScript : MonoBehaviour
         Win
     }
     public float gravityScale = 3f;
-    public float tiltSpeed = .1f;
+    public float tiltSpeed = 10f;
     public Vector2 direction = new(0, 0);
+    Vector3 initialPosition = new(0, 0, 0);
+
     public GameObject directionArrow;
     public Rigidbody2D rigidBody2D;
     public TMP_Text gameStateText;
     public GameState currentGameState = GameState.Playing;
-    void FixedUpdate()
+
+    void Start()
+    {
+        initialPosition = transform.position;
+        gameStateText.text = "Playing";
+    }
+
+    private void Update()
     {
         UpdateGameState(currentGameState);
         ManageInput();
-        Move();
         DisplayGravityArrow();
+    }
+
+    void FixedUpdate()
+    {
+        Move();
     }
 
     void ManageInput()
     {
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            direction.x += tiltSpeed;
+            direction.x += tiltSpeed * Time.deltaTime;
         }
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            direction.x -= tiltSpeed;
+            direction.x -= tiltSpeed * Time.deltaTime;
         }
         if (Input.GetKey(KeyCode.UpArrow))
         {
-            direction.y += tiltSpeed;
+            direction.y += tiltSpeed * Time.deltaTime;
         }
         if (Input.GetKey(KeyCode.DownArrow))
         {
-            direction.y -= tiltSpeed;
+            direction.y -= tiltSpeed * Time.deltaTime;
         }
         direction = Vector3.ClampMagnitude(direction, 1f);
 
         if (currentGameState != GameState.Playing && Input.GetKeyDown(KeyCode.Space))
         {
-           StartCoroutine(WaitAndRestart(0.1f));
+            Restart();
         }
     }
 
@@ -102,7 +115,16 @@ public class BallScript : MonoBehaviour
         }
     }
 
-    IEnumerator WaitAndRestart(float waitTime)
+    void Restart()
+    {
+        currentGameState = GameState.Playing;
+        gameStateText.text = "Playing";
+        direction = Vector2.zero;
+        transform.position = initialPosition;
+        rigidBody2D.linearVelocity = Vector2.zero;
+    }
+
+        IEnumerator WaitAndRestart(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
