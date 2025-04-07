@@ -23,10 +23,16 @@ public class BallScript : MonoBehaviour
 
     public Rigidbody2D rigidBody2D;
     public TMP_Text gameStateText;
+    public TMP_Text timerText;
+
+    private float initialTime = 0f;
+    private float timeElapsed = 0f;
+
     public GameState currentGameState = GameState.Playing;
 
     void Start()
     {
+        initialTime = 0f;
         initialPosition = transform.position;
         gameStateText.text = "Playing";
     }
@@ -34,6 +40,7 @@ public class BallScript : MonoBehaviour
     private void Update()
     {
         UpdateGameState(currentGameState);
+        UpdateTimer();
         ManageInput();
         DisplayGravityArrow();
     }
@@ -43,21 +50,32 @@ public class BallScript : MonoBehaviour
         Move();
     }
 
+    void UpdateTimer()
+    {
+        if (currentGameState == GameState.Playing)
+        {
+            timeElapsed = Time.timeSinceLevelLoad - initialTime;
+            int minutes = Mathf.FloorToInt(timeElapsed / 60f);
+            int seconds = Mathf.FloorToInt(timeElapsed % 60f);
+            timerText.text = minutes.ToString("00") + ":" + seconds.ToString("00");
+        }
+    }
+
     void ManageInput()
     {
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.D))
         {
             direction.x += tiltSpeed * Time.deltaTime;
         }
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.A))
         {
             direction.x -= tiltSpeed * Time.deltaTime;
         }
-        if (Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.W))
         {
             direction.y += tiltSpeed * Time.deltaTime;
         }
-        if (Input.GetKey(KeyCode.DownArrow))
+        if (Input.GetKey(KeyCode.S))
         {
             direction.y -= tiltSpeed * Time.deltaTime;
         }
@@ -123,6 +141,7 @@ public class BallScript : MonoBehaviour
     void Restart()
     {
         currentGameState = GameState.Playing;
+        initialTime = Time.timeSinceLevelLoad;
         gameStateText.text = "Playing";
         direction = Vector2.zero;
         transform.position = initialPosition;
