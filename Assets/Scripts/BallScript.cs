@@ -18,6 +18,9 @@ public class BallScript : MonoBehaviour
     Vector3 initialPosition = new(0, 0, 0);
 
     public GameObject directionArrow;
+    public GameObject verticalTiltArrow;
+    public GameObject horizontalTiltArrow;
+
     public Rigidbody2D rigidBody2D;
     public TMP_Text gameStateText;
     public GameState currentGameState = GameState.Playing;
@@ -82,6 +85,8 @@ public class BallScript : MonoBehaviour
     {
         directionArrow.transform.rotation = Quaternion.LookRotation(Vector3.forward, direction);
         directionArrow.transform.localScale = 10 * direction.magnitude * new Vector3(1, 1, 1);
+        horizontalTiltArrow.transform.localScale =  new Vector3(10, 10 * direction.x, 1);
+        verticalTiltArrow.transform.localScale = new Vector3(10, 10 * direction.y, 1);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
